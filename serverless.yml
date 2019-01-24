@@ -1,0 +1,22 @@
+service:
+  name: jamon-api
+  description: APIs used by the JAMstack deployment demos
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-central-1
+
+functions:
+  description:
+    handler: handler.description
+    events:
+      - http:
+          method: get
+          path: description
+          cors: true

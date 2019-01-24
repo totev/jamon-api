@@ -2,13 +2,16 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import { countries } from 'country-data';
 
 const descriptions = {
-  netlify: 'Blah blah blah netlify blah blah blah',
+  netlify: 'This site is deployed on netlify. \nCheckout the details under https://github.com/totev/jamon',
   aws: 'Blah blah blah AWS blah blah',
-  notSupported: 'This platform is not supported. Have you been cheating?',
+  notSupported: 'This platform is not supported. Have you been cheating? \nFor a list of supported platforms check https://github.com/totev/jamon',
 };
 export const description: APIGatewayProxyHandler = async event => {
   const platform = event.queryStringParameters['platform'] || 'notSupported';
-  const description = descriptions[platform] || descriptions.notSupported;
+  const maybeDescription = Object.keys(descriptions).find(
+    it => platform.indexOf(it) >= 0
+  );
+  const description = descriptions[maybeDescription] || descriptions.notSupported;
   return {
     statusCode: 200,
     headers: {

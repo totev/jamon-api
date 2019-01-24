@@ -9,8 +9,6 @@ const descriptions = {
 export const description: APIGatewayProxyHandler = async event => {
   const platform = event.queryStringParameters['platform'] || 'notSupported';
   const description = descriptions[platform] || descriptions.notSupported;
-  const countryAlpha2 = event.headers['CloudFront-Viewer-Country'];
-  const userCountry = countries[countryAlpha2];
   return {
     statusCode: 200,
     headers: {
@@ -18,8 +16,6 @@ export const description: APIGatewayProxyHandler = async event => {
     },
     body: JSON.stringify({
       description,
-      userCountry,
-      originalInput: event,
     }),
   };
 };

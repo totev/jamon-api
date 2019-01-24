@@ -20,3 +20,10 @@ functions:
           method: get
           path: description
           cors: true
+  ipToGeoCountry:
+    handler: handler.ipToGeoCountry
+    events:
+      - http:
+          method: get
+          path: ip
+          cors: true

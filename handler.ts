@@ -3,6 +3,7 @@ import { countries } from 'country-data';
 
 const descriptions = {
   netlify: 'This site is deployed on netlify. \nCheckout the details under https://github.com/totev/jamon',
+  github: 'This site is deployed on GitHub Pages. \nCheckout the details under https://github.com/totev/jamon',
   aws: 'Blah blah blah AWS blah blah',
   notSupported: 'This platform is not supported. Have you been cheating? \nFor a list of supported platforms check https://github.com/totev/jamon',
 };
